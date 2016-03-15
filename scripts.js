@@ -70,6 +70,9 @@ $(document).ready(function() {
 			title: $('.title-input').val(),
 			url: $('.url-input').val()
 		});
+		$('.author-input').val('');
+		$('.title-input').val('');
+		$('.url-input').val('');
 		console.log(blog.toJSON());
 		blogs.add(blog);
 	});
