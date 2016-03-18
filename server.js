@@ -16,13 +16,13 @@ mongoose.model('Blog', BlogSchema);
 
 var Blog = mongoose.model('Blog');
 
-var blog = new Blog({
+/*var blog = new Blog({
 	author: 'Sonia',
 	title: 'Sonia\'s Blog',
 	url: 'http://soniasblog.com'
 });
 
-blog.save();
+blog.save();*/
 
 var app = express();
 
@@ -51,6 +51,20 @@ app.post('/api/blogs', function(req, res) {
 		res.send(doc);
 	});
 });
+
+app.delete('/api/blogs/:id', function (req, res) {
+	console.log('Received a DELETE request for _id: ' + req.params.id );
+	Blog.remove({_id: req.params.id},
+		function(err) {
+			res.send({_id: req.params.id})
+	});
+});
+
+app.put('/api/blogs/:id', function(req, res) {
+	Blog.update({
+		_id: request.params.id
+	});
+})
 
 var port = 3000;
 
