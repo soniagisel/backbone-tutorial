@@ -1,5 +1,5 @@
 var UsersView = Backbone.View.extend({
-	model: null,
+	//model: null,
 	el: $('.container'),
 
 	initialize: function() {

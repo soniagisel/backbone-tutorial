@@ -1,7 +1,7 @@
 var Routes = Backbone.Router.extend({
 
 	routes: {
-		''          : 'blogsPage',
+		''         : 'blogsPage',
 		'blogs'    : 'blogsPage',
 		'users'    : 'usersPage'
 	},
@@ -16,4 +16,5 @@ var Routes = Backbone.Router.extend({
 });
 
 var routes = new Routes();
+
 Backbone.history.start();
