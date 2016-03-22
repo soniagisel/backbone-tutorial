@@ -119,7 +119,7 @@ var BlogsView = Backbone.View.extend({
 	}
 });
 
-var blogsView = new BlogsView();
+
 
 $(document).ready(function() {
 	$('.add-blog').on('click', function() {
