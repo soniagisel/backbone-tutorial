@@ -81,10 +81,28 @@ var BlogView = Backbone.View.extend({
 	}
 });
 
+
 //Backbone View for all blogs
 var BlogsView = Backbone.View.extend({
+	model: null,
+	el: $('.container'),
+	template: _.template($('#blogsView').html()),
+
+	initialize: function() {
+		this.render();
+	},
+
+	render: function() {
+		this.$el.html(this.template);
+		this.$el.find('.table').append(new BlogsListView().render().$el)
+		return this;
+	}
+});
+
+//Backbone View for all blogs
+var BlogsListView = Backbone.View.extend({
 	model: blogs,
-	el: $('.blogs-list'),
+	tagName: 'tbody',
 
 	initialize: function() {
 		var self = this;
@@ -110,10 +128,11 @@ var BlogsView = Backbone.View.extend({
 	},
 
 	render: function() {
+
 		var self = this;
 		this.$el.html('');
 		_.each(this.model.toArray(), function(blog) {
-			self.$el.append((new BlogView({model: blog})).render().$el);
+			self.$el.append(new BlogView({model: blog}).render().$el);
 		});
 		return this;
 	}

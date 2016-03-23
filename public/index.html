@@ -16,7 +16,11 @@
 		  <button type="button" class="btn btn-default"><a href="#users">Users</a></button>
 		</div>
 	</nav>
-	<div class="container">
+	
+	<div class="container"></div>
+
+
+	<script type="text/template" id="blogsView">
 		<h1>Backbone Tutorial Blogroll</h1>
 
 		<table class="table">
@@ -34,10 +38,8 @@
 					<td><button class="btn btn-primary add-blog">Add</button></td>
 				</tr>
 			</thead>
-			<tbody class="blogs-list">
-			</tbody>
-		</table>
-	</div>
+		</table>		
+	</script>
 
 	<script type="text/template" class="blogs-list-template">
 		<td><span class="author"><%= author %></span></td>

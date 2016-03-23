@@ -16,14 +16,6 @@ mongoose.model('Blog', BlogSchema);
 
 var Blog = mongoose.model('Blog');
 
-/*var blog = new Blog({
-	author: 'Sonia',
-	title: 'Sonia\'s Blog',
-	url: 'http://soniasblog.com'
-});
-
-blog.save();*/
-
 var app = express();
 
 app.use(express.static(__dirname + '/public'));
@@ -62,7 +54,9 @@ app.delete('/api/blogs/:id', function (req, res) {
 
 app.put('/api/blogs/:id', function(req, res) {
 	Blog.update({
-		_id: request.params.id
+		_id: req.params.id
+	}, req.body, function(err) {
+		res.send({_id: req.params.id})
 	});
 })
 
