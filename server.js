@@ -58,7 +58,7 @@ app.put('/api/blogs/:id', function(req, res) {
 	}, req.body, function(err) {
 		res.send({_id: req.params.id})
 	});
-})
+});
 
 var port = 3000;
 
