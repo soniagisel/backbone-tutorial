@@ -1,4 +1,4 @@
-define(['Backbone','underscore', 'jquery'], function(Backbone, _, $) {
+define(['Backbone'], function(Backbone) {
 	return Backbone.View.extend({
 		//model: null,
 		el: $('.container'),

@@ -1,5 +1,5 @@
-define(['Backbone', 'underscore', 'jquery', 'blogsCollection', 'blogView', 'blogsInstance'],
-    function (Backbone, _, $, BlogsCollection, BlogView, BlogsInstance) {
+define(['Backbone', 'blogsCollection', 'blogView', 'blogsInstance'],
+    function (Backbone, BlogsCollection, BlogView, BlogsInstance) {
         //Backbone View for all blogs
         var BlogsListView = Backbone.View.extend({
             

@@ -1,10 +1,10 @@
-define(['Backbone', 'underscore', 'jquery', 'blogsListView', 'blogModel', 'blogsInstance'], 
-    function (Backbone,_,$, BlogsListView, BlogModel, BlogsInstance) {
+define(['Backbone', 'blogsListView', 'blogModel', 'blogsInstance', 'text!blogsViewTmpl'], 
+    function (Backbone, BlogsListView, BlogModel, BlogsInstance, blogsViewTmpl) {
     //Backbone View for all blogs
     var BlogsView = Backbone.View.extend({
         model: null,
         el: $('.container'),
-        template: _.template($('#blogsView').html()),
+        template: _.template(blogsViewTmpl),
 
         events: {
             'click .add-blog' : 'addBlog'

@@ -1,4 +1,4 @@
-define(['Backbone', 'jquery', 'underscore', 'blogModel', 'blogsView'], function (Backbone,$ , _, BlogModel, BlogsView) {
+define(['Backbone','blogModel', 'blogsView', 'text!blogsListTmpl'], function (Backbone, BlogModel, BlogsView, blogsListTmpl) {
 
     //Backbone View for one blog
     var BlogView = Backbone.View.extend({
@@ -53,7 +53,7 @@ define(['Backbone', 'jquery', 'underscore', 'blogModel', 'blogsView'], function 
             });
         },
         initialize : function() {
-            this.template = _.template($('.blogs-list-template').html());
+            this.template = _.template(blogsListTmpl);
         },
 
         render : function() {
