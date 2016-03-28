@@ -1,10 +1,11 @@
-define(['Backbone', 'usersView', 'blogsView'], function(Backbone, UsersView, BlogsView) {
+define(['Backbone', 'usersView', 'blogsView', 'userFormView'], function(Backbone, UsersView, BlogsView, UserFormView) {
 	return Backbone.Router.extend({
 
 		routes: {
-			''         : 'blogsPage',
-			'blogs'    : 'blogsPage',
-			'users'    : 'usersPage'
+			''          : 'blogsPage',
+			'blogs'     : 'blogsPage',
+			'users'     : 'usersPage',
+			'users/:id' : 'editUserPage'
 		},
 
 		blogsPage : function() {
@@ -13,6 +14,10 @@ define(['Backbone', 'usersView', 'blogsView'], function(Backbone, UsersView, Blo
 
 		usersPage : function() {
 			new UsersView();
+		},
+
+		editUserPage : function() {
+			new UserFormView();
 		}
 	});
 });

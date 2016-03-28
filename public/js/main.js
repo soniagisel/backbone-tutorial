@@ -10,22 +10,37 @@ require.config({
         //Router
         router          : 'configs/router',
 
-        //Views
+        ///Views///
+        
+        //users
         usersView       : 'views/users-view',
+        userView        : 'views/user-view',
+        usersListView   : 'views/users-list-view',
+        userFormView    : 'views/user-form-view',
+        
+        //blogs
         blogsView       : 'views/blogs-view',
         blogView        : 'views/blog-view',
         blogsListView   : 'views/blogs-list-view',
 
         //Models
         blogModel       : 'models/blog-model',
+        userModel       : 'models/user-model',
         
         //Collections
         blogsCollection : 'collections/blogs-collection',
         blogsInstance   : 'collections/blogs-instance',
 
+        usersCollection : 'collections/users-collection',
+        usersInstance   : 'collections/users-instance',
+
         //Templates
         blogsViewTmpl   : 'tmpl/blogs-view-tmpl.html',
-        blogsListTmpl   : 'tmpl/blogs-list-tmpl.html'
+        blogsListTmpl   : 'tmpl/blogs-list-tmpl.html',
+        usersViewTmpl   : 'tmpl/users-view-tmpl.html',
+        userFromTmpl    : 'tmpl/user-form-tmpl.html',
+        usersListTmpl   : 'tmpl/users-list-tmpl.html'
+
     },
 
     shim: {

@@ -1,15 +1,17 @@
-define(['Backbone'], function(Backbone) {
+define(['Backbone', 'text!usersViewTmpl', 'usersListView'], function(Backbone, usersViewTmpl, UsersListView) {
 	return Backbone.View.extend({
-		//model: null,
+		model: null,
 		el: $('.container'),
+		template: _.template(usersViewTmpl),
 
 		initialize: function() {
 			this.render();
 		},
 
 		render: function() {
-			var template = _.template($('<h1>Hola Mundo</h1>').html());
-			this.$el.html(template);
+			this.$el.html(this.template);
+			this.$el.find('.table').append(new UsersListView().$el);
+			return this;
 		}
 	});
 });

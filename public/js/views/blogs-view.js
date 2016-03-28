@@ -38,7 +38,7 @@ define(['Backbone', 'blogsListView', 'blogModel', 'blogsInstance', 'text!blogsVi
 
         render: function() {
             this.$el.html(this.template);
-            this.$el.find('.table').append(new BlogsListView().render().$el)
+            this.$el.find('.table').append(new BlogsListView().$el)
             return this;
         }
     });
