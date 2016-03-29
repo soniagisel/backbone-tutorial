@@ -1,13 +1,15 @@
-define(['Backbone', 'usersCollection', 'userView'],
-    function (Backbone, UsersCollection, UserView) {
+define(['Backbone', 'blogView'],
+    function (Backbone, BlogView) {
         //Backbone View for all blogs
-        var UsersListView = Backbone.View.extend({
-
-            model: new UsersCollection(),
+        var BlogsListView = Backbone.View.extend({
+            
+            model: null,
             tagName: 'tbody',
 
-            initialize: function() {
+            initialize: function(blogs) {
                 var self = this;
+                this.model = blogs;
+                this.model.on('add', this.render, this);
                 this.model.on('change', function() {
                     setTimeout(function() {
                         self.render();
@@ -19,12 +21,12 @@ define(['Backbone', 'usersCollection', 'userView'],
                 this.model.fetch({
                     success: function(response) {
                         _.each(response.toJSON(), function(item) {
-                            console.log('Successfully GOT user with _id: ' + item._id);
+                            console.log('Successfully GOT blog with _id: ' + item._id);
                             self.render();
                         });
                     },
                     error: function() {
-                        console.log('Failed to get users');
+                        console.log('Failed to get Blogs');
                     }
                 });
             },
@@ -33,12 +35,12 @@ define(['Backbone', 'usersCollection', 'userView'],
 
                 var self = this;
                 this.$el.html('');
-                _.each(this.model.toArray(), function(user) {
-                    self.$el.append(new UserView({model: user}).render().$el);
+                _.each(this.model.toArray(), function(blog) {
+                    self.$el.append(new BlogView({model: blog}).render().$el);
                 });
                 return this;
             }
         });
 
-        return UsersListView;
-    });
+    return BlogsListView;
+});

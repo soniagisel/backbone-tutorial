@@ -13,33 +13,31 @@ require.config({
         ///Views///
         
         //users
-        usersView       : 'views/users-view',
-        userView        : 'views/user-view',
-        usersListView   : 'views/users-list-view',
-        userFormView    : 'views/user-form-view',
+        usersView       : 'modules/users/views/users-view',
+        userView        : 'modules/users/views/user-view',
+        usersListView   : 'modules/users/views/users-list-view',
+        userFormView    : 'modules/users/views/user-form-view',
         
         //blogs
-        blogsView       : 'views/blogs-view',
-        blogView        : 'views/blog-view',
-        blogsListView   : 'views/blogs-list-view',
+        blogsView       : 'modules/blogs/views/blogs-view',
+        blogView        : 'modules/blogs/views/blog-view',
+        blogsListView   : 'modules/blogs/views/blogs-list-view',
 
         //Models
-        blogModel       : 'models/blog-model',
-        userModel       : 'models/user-model',
+        blogModel       : 'modules/blogs/models/blog-model',
+        userModel       : 'modules/users/models/user-model',
         
         //Collections
-        blogsCollection : 'collections/blogs-collection',
-        blogsInstance   : 'collections/blogs-instance',
+        blogsCollection : 'modules/blogs/collections/blogs-collection',
 
-        usersCollection : 'collections/users-collection',
-        usersInstance   : 'collections/users-instance',
+        usersCollection : 'modules/users/collections/users-collection',
 
         //Templates
-        blogsViewTmpl   : 'tmpl/blogs-view-tmpl.html',
-        blogsListTmpl   : 'tmpl/blogs-list-tmpl.html',
-        usersViewTmpl   : 'tmpl/users-view-tmpl.html',
-        userFromTmpl    : 'tmpl/user-form-tmpl.html',
-        usersListTmpl   : 'tmpl/users-list-tmpl.html'
+        blogsViewTmpl   : 'modules/blogs/templates/blogs-view-tmpl.html',
+        blogsListTmpl   : 'modules/blogs/templates/blogs-list-tmpl.html',
+        usersViewTmpl   : 'modules/users/templates/users-view-tmpl.html',
+        userFromTmpl    : 'modules/users/templates/user-form-tmpl.html',
+        usersListTmpl   : 'modules/users/templates/users-list-tmpl.html'
 
     },
 

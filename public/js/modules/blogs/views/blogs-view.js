@@ -1,13 +1,17 @@
-define(['Backbone', 'blogsListView', 'blogModel', 'blogsInstance', 'text!blogsViewTmpl'], 
-    function (Backbone, BlogsListView, BlogModel, BlogsInstance, blogsViewTmpl) {
+define(['Backbone', 'blogsListView', 'blogsCollection', 'blogModel' , 'text!blogsViewTmpl'],
+    function (Backbone, BlogsListView, BlogsCollection, BlogModel, blogsViewTmpl) {
     //Backbone View for all blogs
     var BlogsView = Backbone.View.extend({
         model: null,
         el: $('.container'),
         template: _.template(blogsViewTmpl),
-
         events: {
             'click .add-blog' : 'addBlog'
+        },
+
+        initialize: function(blogs) {
+            this.model = blogs;
+            this.render();
         },
 
         addBlog: function () {
@@ -19,8 +23,8 @@ define(['Backbone', 'blogsListView', 'blogModel', 'blogsInstance', 'text!blogsVi
             $('.author-input').val('');
             $('.title-input').val('');
             $('.url-input').val('');
-            
-            BlogsInstance.add(blog);
+
+            this.model.add(blog);
 
             blog.save(null, {
                 success: function(response) {
@@ -32,13 +36,9 @@ define(['Backbone', 'blogsListView', 'blogModel', 'blogsInstance', 'text!blogsVi
             });
         },
 
-        initialize: function() {
-            this.render();
-        },
-
         render: function() {
             this.$el.html(this.template);
-            this.$el.find('.table').append(new BlogsListView().$el)
+            this.$el.find('.table').append(new BlogsListView(this.model).$el)
             return this;
         }
     });

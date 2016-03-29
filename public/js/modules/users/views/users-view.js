@@ -4,13 +4,14 @@ define(['Backbone', 'text!usersViewTmpl', 'usersListView'], function(Backbone, u
 		el: $('.container'),
 		template: _.template(usersViewTmpl),
 
-		initialize: function() {
+		initialize: function(users) {
+			this.model = users;
 			this.render();
 		},
 
 		render: function() {
 			this.$el.html(this.template);
-			this.$el.find('.table').append(new UsersListView().$el);
+			this.$el.find('.table').append(new UsersListView(this.model).$el);
 			return this;
 		}
 	});

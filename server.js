@@ -41,9 +41,6 @@ app.get('/api/blogs', function(req, res) {
 
 app.post('/api/blogs', function(req, res) {
 	console.log('Received a POST request');
-	for (var key in req.body) {
-		console.log(key + ': ' + req.body[key]);
-	}
 	var blog = new Blog(req.body);
 	blog.save(function(err, doc) {
 		res.send(doc);
@@ -80,9 +77,7 @@ app.get('/api/users', function (req, res) {
 
 app.post('/api/users', function (req, res) {
 	console.log('Received POST request for USERS');
-	for (var key in req.body) {
-		console.log(key + ': ' + req.body[key]);
-	}
+
 	var user = new User(req.body);
 	user.save(function (err, doc) {
 		res.send(doc);
