@@ -32,10 +32,15 @@ app.use(bodyParser.json());
 // ROUTES BLOGS
 app.get('/api/blogs', function(req, res) {
 	Blog.find(function(err, docs) {
-		docs.forEach(function(item) {
-			console.log('Received a GET request for _id: ' + item._id);
-		});
-		res.send(docs);
+		if (!err) {
+			docs.forEach(function(item) {
+				console.log('Received a GET request for _id: ' + item._id);
+			});
+			res.send(docs);
+		} else {
+			res.send({error: err});
+		}
+
 	});
 });
 
@@ -43,7 +48,11 @@ app.post('/api/blogs', function(req, res) {
 	console.log('Received a POST request');
 	var blog = new Blog(req.body);
 	blog.save(function(err, doc) {
-		res.send(doc);
+		if (!err) {
+			res.send(doc);
+		} else {
+			res.send({error : err});
+		}
 	});
 });
 
@@ -52,7 +61,11 @@ app.delete('/api/blogs/:id', function (req, res) {
 	console.log('Received a DELETE request for _id: ' + req.params.id );
 	Blog.remove({_id: req.params.id},
 		function(err) {
-			res.send({_id: req.params.id})
+			if (!err) {
+				res.send({_id: req.params.id})
+			} else {
+				res.send({error: err})
+			}
 	});
 });
 
@@ -60,7 +73,11 @@ app.put('/api/blogs/:id', function(req, res) {
 	Blog.update({
 		_id: req.params.id
 	}, req.body, function(err) {
-		res.send({_id: req.params.id})
+		if (!err) {
+			res.send({_id: req.params.id})
+		} else {
+			res.send({error: err})
+		}
 	});
 });
 
@@ -68,10 +85,14 @@ app.put('/api/blogs/:id', function(req, res) {
 // ROUTES USERS
 app.get('/api/users', function (req, res) {
 	User.find(function (err, docs) {
-		docs.forEach(function (item) {
-			console.log('Received a GET request for USER _id: ' + item._id);
-		});
-		res.send(docs);
+		if (!err) {
+			docs.forEach(function (item) {
+				console.log('Received a GET request for USER _id: ' + item._id);
+			});
+			res.send(docs);
+		} else {
+			res.send({error: err})
+		}
 	});
 });
 
@@ -80,15 +101,23 @@ app.post('/api/users', function (req, res) {
 
 	var user = new User(req.body);
 	user.save(function (err, doc) {
-		res.send(doc);
+		if (!err) {
+			res.send(doc);
+		} else {
+			res.send({error : err})
+		}
 	});
-})
+});
 
 app.delete('/api/users/:id', function (req, res) {
 	console.log('Received DELETE request for user _id: ' + req.params.id);
 	User.remove({_id: req.params.id},
 		function (err) {
-			res.send({_id: req.params.id})
+			if (!err) {
+				res.send({_id: req.params.id})
+			} else {
+				res.send({error: err})
+			}
 		}
 	);
 });
@@ -97,7 +126,11 @@ app.put('/api/users/:id', function(req, res) {
 	User.update({
 		_id: req.params.id
 	}, req.body, function(err) {
-		res.send({_id: req.params.id})
+		if(!err) {
+			res.send({_id: req.params.id})
+		} else {
+			res.send({error: err})
+		}
 	});
 });
 

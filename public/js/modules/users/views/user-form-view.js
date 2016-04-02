@@ -1,5 +1,5 @@
 define(['Backbone', 'text!userFromTmpl', 'usersListView', 'userModel'],
-    function(Backbone, UserFromTmpl, UserModel) {
+    function(Backbone, UserFromTmpl, UsersListView, UserModel) {
         return Backbone.View.extend({
             model: null,
             el: $('.container'),
@@ -9,8 +9,7 @@ define(['Backbone', 'text!userFromTmpl', 'usersListView', 'userModel'],
                 'click .save-new-user' : 'saveNewUser'
             },
 
-            initialize: function(users) {
-                this.model = users;
+            initialize: function() {
                 this.render();
             },
 
@@ -19,7 +18,7 @@ define(['Backbone', 'text!userFromTmpl', 'usersListView', 'userModel'],
                 return this;
             },
 
-            saveNewUser : function () {
+            saveNewUser : function (users) {
                 var user = new UserModel({
                     username: $('.username-input').val(),
                     email: $('.email-input').val(),
@@ -32,11 +31,13 @@ define(['Backbone', 'text!userFromTmpl', 'usersListView', 'userModel'],
                 user.save(null, {
                     success: function(response) {
                         console.log('Successfully saved User with _id: ' + response.toJSON()._id);
+                        Backbone.history.navigate('users', true);
                     },
                     error: function() {
                         console.log('Failed to save User');
                     }
                 });
+
             }
     });
 });

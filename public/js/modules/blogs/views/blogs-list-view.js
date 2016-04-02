@@ -3,22 +3,22 @@ define(['Backbone', 'blogView'],
         //Backbone View for all blogs
         var BlogsListView = Backbone.View.extend({
             
-            model: null,
+            collection: null,
             tagName: 'tbody',
 
             initialize: function(blogs) {
                 var self = this;
-                this.model = blogs;
-                this.model.on('add', this.render, this);
-                this.model.on('change', function() {
+                this.collection = blogs;
+                this.collection.on('add', this.render, this);
+                this.collection.on('change', function() {
                     setTimeout(function() {
                         self.render();
                     }, 30);
                 }, this);
 
-                this.model.on('remove', this.render, this);
+                this.collection.on('remove', this.render, this);
 
-                this.model.fetch({
+                this.collection.fetch({
                     success: function(response) {
                         _.each(response.toJSON(), function(item) {
                             console.log('Successfully GOT blog with _id: ' + item._id);
@@ -35,8 +35,8 @@ define(['Backbone', 'blogView'],
 
                 var self = this;
                 this.$el.html('');
-                _.each(this.model.toArray(), function(blog) {
-                    self.$el.append(new BlogView({model: blog}).render().$el);
+                _.each(this.collection.toArray(), function(blog) {
+                    self.$el.append(new BlogView(blog).render().$el);
                 });
                 return this;
             }

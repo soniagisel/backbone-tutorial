@@ -2,7 +2,7 @@ define(['Backbone', 'blogsListView', 'blogsCollection', 'blogModel' , 'text!blog
     function (Backbone, BlogsListView, BlogsCollection, BlogModel, blogsViewTmpl) {
     //Backbone View for all blogs
     var BlogsView = Backbone.View.extend({
-        model: null,
+        collection: null,
         el: $('.container'),
         template: _.template(blogsViewTmpl),
         events: {
@@ -10,7 +10,7 @@ define(['Backbone', 'blogsListView', 'blogsCollection', 'blogModel' , 'text!blog
         },
 
         initialize: function(blogs) {
-            this.model = blogs;
+            this.collection = blogs;
             this.render();
         },
 
@@ -24,7 +24,7 @@ define(['Backbone', 'blogsListView', 'blogsCollection', 'blogModel' , 'text!blog
             $('.title-input').val('');
             $('.url-input').val('');
 
-            this.model.add(blog);
+            this.collection.add(blog);
 
             blog.save(null, {
                 success: function(response) {
@@ -38,7 +38,7 @@ define(['Backbone', 'blogsListView', 'blogsCollection', 'blogModel' , 'text!blog
 
         render: function() {
             this.$el.html(this.template);
-            this.$el.find('.table').append(new BlogsListView(this.model).$el)
+            this.$el.find('.table').append(new BlogsListView(this.collection).$el)
             return this;
         }
     });
