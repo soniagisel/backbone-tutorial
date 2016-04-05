@@ -7,7 +7,7 @@ define(['Backbone'], function (Backbone) {
             email    : '',
             phone    : ''
         },
-        url: 'http://localhost:3000/api/users'
+        urlRoot: 'http://localhost:3000/api/users'
     });
     return UserModel;
 });

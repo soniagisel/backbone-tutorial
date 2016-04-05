@@ -91,7 +91,17 @@ app.get('/api/users', function (req, res) {
 			});
 			res.send(docs);
 		} else {
-			res.send({error: err})
+			res.send({error: err});
+		}
+	});
+});
+
+app.get('/api/users/:id', function (req, res) {
+	User.findOne({'_id': req.params.id}, function (err, doc) {
+		if (!err) {
+			res.send(doc);
+		} else {
+			res.send({error: err});
 		}
 	});
 });

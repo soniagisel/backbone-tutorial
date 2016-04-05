@@ -3,15 +3,15 @@
 <div class="new-user-form col-md-9">
     <div class="username form-group">
         <label>Username</label>
-        <input type="text" class="form-control username-input" placeholder="Ingrese su username">
+        <input type="text" class="form-control username-input" value="<%= username %>" placeholder="Ingrese su username">
     </div>
     <div class="email form-group">
         <label>Email</label>
-        <input type="text" class="form-control email-input" placeholder="Escriba su email">
+        <input type="text" class="form-control email-input" value="<%= email %>" placeholder="Escriba su email">
     </div>
     <div class="phone form-group">
         <label>Phone</label>
-        <input type="tel" class="form-control phone-input" placeholder="Escriba su telefono">
+        <input type="tel" class="form-control phone-input" value="<%= phone %>" placeholder="Escriba su telefono">
     </div>
     <div class="col-md-6">
         <button type="submit" class="btn btn-success save-new-user col-md-3">Enviar</button>

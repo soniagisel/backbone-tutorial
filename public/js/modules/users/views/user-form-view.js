@@ -1,7 +1,7 @@
 define(['Backbone', 'text!userFromTmpl', 'usersListView', 'userModel'],
     function(Backbone, UserFromTmpl, UsersListView, UserModel) {
         return Backbone.View.extend({
-            model: null,
+            model: new UserModel(),
             el: $('.container'),
             template: _.template(UserFromTmpl),
 
@@ -9,13 +9,29 @@ define(['Backbone', 'text!userFromTmpl', 'usersListView', 'userModel'],
                 'click .save-new-user' : 'saveNewUser'
             },
 
-            initialize: function() {
-                this.render();
+            initialize: function(id) {
+                var self = this;
+                if(id) { //exist
+
+                    var user = new UserModel({'_id' : id});
+                    user.fetch({
+                        success: function(response) {
+                            self.model = response;
+                            self.render();
+                        },
+                        error: function() {
+                            console.log('Failed to get Blogs');
+                        }
+                    });
+                } else { //create
+                    this.render();
+                }
             },
 
             render: function() {
-                this.$el.html(this.template);
+                this.$el.html(this.template(this.model.toJSON()));
                 return this;
+
             },
 
             saveNewUser : function (users) {

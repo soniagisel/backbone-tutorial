@@ -7,7 +7,7 @@ define(['Backbone', 'usersPageView', 'blogsPageView', 'userFormView', 'usersColl
 				'blogs'     : 'blogsPage',
 				'users'     : 'usersPage',
 				'users/:id' : 'editUserPage',
-				'user/:id'  : 'createUserPage'
+				'user/new'  : 'createUserPage'
 			},
 	
 			blogsPage : function() {
@@ -20,8 +20,8 @@ define(['Backbone', 'usersPageView', 'blogsPageView', 'userFormView', 'usersColl
 				new UsersPageView(users);
 			},
 	
-			editUserPage : function() {
-				new UserFormView();
+			editUserPage : function(id) {
+				new UserFormView(id);
 			},
 	
 			createUserPage : function() {
