@@ -13,7 +13,7 @@ require.config({
         ///Views///
         
         //users
-        usersPageView       : 'modules/users/views/users-page-view',
+        usersPageView   : 'modules/users/views/users-page-view',
         userView        : 'modules/users/views/user-view',
         usersListView   : 'modules/users/views/users-list-view',
         userFormView    : 'modules/users/views/user-form-view',

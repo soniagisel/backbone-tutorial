@@ -1,18 +1,19 @@
-define(['Backbone', 'text!userFromTmpl', 'usersListView', 'userModel'],
-    function(Backbone, UserFromTmpl, UsersListView, UserModel) {
+define(['Backbone', 'text!userFromTmpl', 'usersListView', 'userModel', 'usersPageView'],
+    function(Backbone, UserFromTmpl, UsersListView, UserModel, UsersPageView) {
         return Backbone.View.extend({
             model: new UserModel(),
             el: $('.container'),
             template: _.template(UserFromTmpl),
 
             events: {
-                'click .save-new-user' : 'saveNewUser'
+                'click .save-new-user' : 'saveNewUser',
+                'click .save-edited-user' : 'updateUser',
+                'click .cancel-action' : 'cancelAction'
             },
 
             initialize: function(id) {
                 var self = this;
                 if(id) { //exist
-
                     var user = new UserModel({'_id' : id});
                     user.fetch({
                         success: function(response) {
@@ -31,7 +32,6 @@ define(['Backbone', 'text!userFromTmpl', 'usersListView', 'userModel'],
             render: function() {
                 this.$el.html(this.template(this.model.toJSON()));
                 return this;
-
             },
 
             saveNewUser : function (users) {
@@ -54,6 +54,26 @@ define(['Backbone', 'text!userFromTmpl', 'usersListView', 'userModel'],
                     }
                 });
 
+            },
+
+            updateUser : function () {
+                this.model.set('username', $('.username-input').val());
+                this.model.set('email', $('.email-input').val());
+                this.model.set('phone', $('.phone-input').val());
+
+                this.model.save(null, {
+                    success: function(response) {
+                        console.log('Successfully UPDATED blog with _id: ' + response.toJSON()._id);
+                        Backbone.history.navigate('users', true);
+                    },
+                    error: function(response) {
+                        console.log('Failed to UPDATE blog.');
+                    }
+                })
+            },
+            
+            cancelAction : function () {
+                Backbone.history.navigate('users', true);
             }
     });
 });
