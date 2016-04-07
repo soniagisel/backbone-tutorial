@@ -3,6 +3,10 @@ define(['Backbone','text!signUpPageTmpl'],
 
         var SignUpPageView = Backbone.View.extend({
             el: $('.container'),
+
+            events: {
+                'click .create-account' : 'submitHandler'
+            },
             
             initialize : function() {
                 console.log('initialize');
@@ -14,6 +18,10 @@ define(['Backbone','text!signUpPageTmpl'],
                 console.log('render');
                 this.$el.html(this.template);
                 return this;
+            },
+
+            submitHandler: function () {
+                alert('formulario enviado');
             }
         });
 
