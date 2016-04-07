@@ -19,15 +19,19 @@ require.config({
         userFormView    : 'modules/users/views/user-form-view',
         
         //blogs
-        blogsPageView       : 'modules/blogs/views/blogs-page-view',
+        blogsPageView   : 'modules/blogs/views/blogs-page-view',
         blogView        : 'modules/blogs/views/blog-view',
         blogsListView   : 'modules/blogs/views/blogs-list-view',
+        
+        //authentication
+        signUpPageView   : 'modules/authentication/views/authentication-page-view',
 
-        //Models
+        ///Models
         blogModel       : 'modules/blogs/models/blog-model',
         userModel       : 'modules/users/models/user-model',
+        signUpModel      : 'modules/authentication/models/signup-model',
         
-        //Collections
+        ///Collections
         blogsCollection : 'modules/blogs/collections/blogs-collection',
 
         usersCollection : 'modules/users/collections/users-collection',
@@ -37,7 +41,8 @@ require.config({
         blogsListTmpl   : 'modules/blogs/templates/blogs-list-tmpl.html',
         usersViewTmpl   : 'modules/users/templates/users-view-tmpl.html',
         userFromTmpl    : 'modules/users/templates/user-form-tmpl.html',
-        usersListTmpl   : 'modules/users/templates/users-list-tmpl.html'
+        usersListTmpl   : 'modules/users/templates/users-list-tmpl.html',
+        signUpPageTmpl   : 'modules/authentication/templates/signup-page-tmpl.html'
 
     },
 

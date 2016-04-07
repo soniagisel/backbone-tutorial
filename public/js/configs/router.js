@@ -1,13 +1,18 @@
-define(['Backbone', 'usersPageView', 'blogsPageView', 'userFormView', 'usersCollection', 'blogsCollection'],
-	function(Backbone, UsersPageView, BlogsPageView, UserFormView, UsersCollection, BlogsCollection) {
+define(['Backbone', 'usersPageView', 'blogsPageView', 'userFormView', 'usersCollection', 'blogsCollection', 'signUpPageView'],
+	function(Backbone, UsersPageView, BlogsPageView, UserFormView, UsersCollection, BlogsCollection, SignUpPageView) {
 		return Backbone.Router.extend({
 	
 			routes: {
-				''          : 'blogsPage',
-				'blogs'     : 'blogsPage',
-				'users'     : 'usersPage',
-				'users/:id' : 'editUserPage',
-				'user/new'  : 'createUserPage'
+				''             : 'signUpPage',
+				'auth/signup'  : 'signUpPage',
+				'blogs'        : 'blogsPage',
+				'users'        : 'usersPage',
+				'users/:id'    : 'editUserPage',
+				'user/new'     : 'createUserPage'
+			},
+			
+			signUpPage: function () {
+				new SignUpPageView();
 			},
 	
 			blogsPage : function() {
