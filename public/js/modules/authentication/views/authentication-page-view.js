@@ -7,6 +7,7 @@ define(['Backbone','text!signUpPageTmpl'],
             initialize : function() {
                 console.log('initialize');
                 this.template = _.template(SignUpPageTmpl);
+                this.render();
             },
 
             render : function() {
