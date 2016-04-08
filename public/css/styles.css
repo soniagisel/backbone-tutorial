@@ -1,3 +1,9 @@
 .update-blog, .cancel {
 	display: none;
 }
+
+#username-error, #cnfm_password-error, #password-error {
+	color: red;
+	font-weight: normal;
+	font-size: .8em;
+}
