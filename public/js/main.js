@@ -6,6 +6,7 @@ require.config({
         underscore      : 'node_modules/underscore/underscore',
         jquery          : 'node_modules/jquery/dist/jquery',
         text            : 'node_modules/requirejs-text/text',
+        validate        : 'bower_components/jquery-validation/dist/jquery.validate',
 
         //Router
         router          : 'configs/router',
@@ -52,6 +53,10 @@ require.config({
         },
         'jquery' : {
             exports: '$'
+        },
+        'validate': {
+            deps: ['jquery'],
+            exports : 'jQuery.fn.validate'
         },
         'Backbone': {
             //These script dependencies should be loaded before loading

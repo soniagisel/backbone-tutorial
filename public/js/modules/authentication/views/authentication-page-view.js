@@ -1,5 +1,5 @@
-define(['Backbone','text!signUpPageTmpl'],
-    function (Backbone, SignUpPageTmpl) {
+define(['Backbone','text!signUpPageTmpl','validate'],
+    function (Backbone, SignUpPageTmpl, validate) {
 
         var SignUpPageView = Backbone.View.extend({
             el: $('.container'),
@@ -21,7 +21,39 @@ define(['Backbone','text!signUpPageTmpl'],
             },
 
             submitHandler: function () {
-                alert('formulario enviado');
+                console.log('formulario enviado');
+                $('.new-account-form').validate({
+                    rules: {
+                        username: {
+                            required: true,
+                            minlength: 4
+                        },
+                        password: {
+                            required: true,
+                            minlength: 5
+                        },
+                        cnfm_password: {
+                            required: true,
+                            minlength: 5,
+                            equalTo: '.password-input'
+                        }
+                    },
+                    messages: {
+                        username: {
+                            required: 'Username is required',
+                            minlength: 'Username must be at least 4 characters length'
+                        },
+                        password: {
+                            required: 'Password is required',
+                            minlength: 'Password must be at least 4 characters length'
+                        },
+                        cnfm_password: {
+                            required: 'Please confirm your password',
+                            minlength: 'Username must be at least 4 characters length',
+                            equalTo: 'Confirmation password must match with the password'
+                        }
+                    }
+                });
             }
         });
 
