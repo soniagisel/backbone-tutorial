@@ -15,7 +15,6 @@ define(['Backbone','text!signUpPageTmpl', 'signUpModel', 'validate'],
             },
 
             render : function() {
-                console.log('render');
                 this.$el.html(this.template);
                 return this;
             },
@@ -27,6 +26,12 @@ define(['Backbone','text!signUpPageTmpl', 'signUpModel', 'validate'],
                         username: {
                             required: true,
                             minlength: 4
+                        },
+                        email: {
+                            required: true
+                        },
+                        phone: {
+                            required: true
                         },
                         password: {
                             required: true,
@@ -43,6 +48,12 @@ define(['Backbone','text!signUpPageTmpl', 'signUpModel', 'validate'],
                             required: 'Username is required',
                             minlength: 'Username must be at least 4 characters length'
                         },
+                        email: {
+                            required: 'Email is required'
+                        },
+                        phone: {
+                            required: 'Phone is required'
+                        },
                         password: {
                             required: 'Password is required',
                             minlength: 'Password must be at least 4 characters length'
@@ -58,6 +69,8 @@ define(['Backbone','text!signUpPageTmpl', 'signUpModel', 'validate'],
                 if ($('.new-account-form').valid()){
                     var userAccount = new SignUpModel({
                         username: $('.username-input').val(),
+                        email: $('.email-input').val(),
+                        phone: $('.phone-input').val(),
                         password: $('.password-input').val()
                     });
 

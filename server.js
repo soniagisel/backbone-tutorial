@@ -15,17 +15,12 @@ var BlogSchema = new Schema({
 var UserSchema = new Schema({
 	username: String,
 	email: String,
-	phone: String
-});
-
-var AccountSchema = new Schema({
-	username: String,
+	phone: String,
 	password: String
 });
 
 mongoose.model('Blog', BlogSchema);
 mongoose.model('User', UserSchema);
-mongoose.model('Account', AccountSchema);
 
 var Blog = mongoose.model('Blog');
 var User = mongoose.model('User');

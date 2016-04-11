@@ -2,7 +2,7 @@
 	display: none;
 }
 
-#username-error, #cnfm_password-error, #password-error {
+#username-error, #cnfm_password-error, #password-error, #phone-error, #email-error {
 	color: red;
 	font-weight: normal;
 	font-size: .8em;

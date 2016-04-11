@@ -5,7 +5,8 @@ define(['Backbone'], function (Backbone) {
         defaults: {
             username : '',
             email    : '',
-            phone    : ''
+            phone    : '',
+            password : ''
         },
         urlRoot: 'http://localhost:3000/api/users'
     });

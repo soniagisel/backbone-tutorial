@@ -4,6 +4,8 @@ define(['Backbone'], function (Backbone) {
     var SignUpModel = Backbone.Model.extend({
         defaults: {
             username    : '',
+            email       : '',
+            phone       : '',
             password    : ''
         },
         urlRoot: 'http://localhost:3000/auth/signup'
