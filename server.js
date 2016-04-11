@@ -148,7 +148,7 @@ app.put('/api/users/:id', function(req, res) {
 
 // New account
 
-app.post('/auth/signup', function (req, res) {
+app.post('/api/auth/signup', function (req, res) {
 	console.log('Received POST request for USERS');
 
 	var user = new User(req.body);

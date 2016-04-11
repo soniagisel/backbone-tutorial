@@ -1,5 +1,5 @@
-define(['Backbone','text!signUpPageTmpl', 'signUpModel', 'validate'],
-    function (Backbone, SignUpPageTmpl, SignUpModel , validate) {
+define(['Backbone','text!signUpPageTmpl', 'userModel', 'validate'],
+    function (Backbone, SignUpPageTmpl, UserModel , validate) {
 
         var SignUpPageView = Backbone.View.extend({
             el: $('.container'),
@@ -67,14 +67,14 @@ define(['Backbone','text!signUpPageTmpl', 'signUpModel', 'validate'],
                 });
 
                 if ($('.new-account-form').valid()){
-                    var userAccount = new SignUpModel({
+                    var user = new UserModel({
                         username: $('.username-input').val(),
                         email: $('.email-input').val(),
                         phone: $('.phone-input').val(),
                         password: $('.password-input').val()
                     });
 
-                    userAccount.save(null, {
+                    user.save(null, {
                         success: function(response) {
                             console.log('Successfully saved User with _id: ' + response.toJSON()._id);
                             Backbone.history.navigate('users', true);
