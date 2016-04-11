@@ -1,5 +1,5 @@
-define(['Backbone','text!signUpPageTmpl','validate'],
-    function (Backbone, SignUpPageTmpl, validate) {
+define(['Backbone','text!signUpPageTmpl', 'signUpModel', 'validate'],
+    function (Backbone, SignUpPageTmpl, SignUpModel , validate) {
 
         var SignUpPageView = Backbone.View.extend({
             el: $('.container'),
@@ -20,8 +20,8 @@ define(['Backbone','text!signUpPageTmpl','validate'],
                 return this;
             },
 
-            submitHandler: function () {
-                console.log('formulario enviado');
+            submitHandler: function (event) {
+                event.preventDefault();
                 $('.new-account-form').validate({
                     rules: {
                         username: {
@@ -54,6 +54,23 @@ define(['Backbone','text!signUpPageTmpl','validate'],
                         }
                     }
                 });
+
+                if ($('.new-account-form').valid()){
+                    var userAccount = new SignUpModel({
+                        username: $('.username-input').val(),
+                        password: $('.password-input').val()
+                    });
+
+                    userAccount.save(null, {
+                        success: function(response) {
+                            console.log('Successfully saved User with _id: ' + response.toJSON()._id);
+                            Backbone.history.navigate('users', true);
+                        },
+                        error: function() {
+                            console.log('Failed to save User');
+                        }
+                    });
+                }
             }
         });
 

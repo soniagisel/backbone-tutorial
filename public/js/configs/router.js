@@ -1,4 +1,5 @@
-define(['Backbone', 'usersPageView', 'blogsPageView', 'userFormView', 'usersCollection', 'blogsCollection', 'signUpPageView'],
+define(['Backbone', 'usersPageView', 'blogsPageView', 'userFormView', 'usersCollection', 
+	'blogsCollection', 'signUpPageView'],
 	function(Backbone, UsersPageView, BlogsPageView, UserFormView, UsersCollection, BlogsCollection, SignUpPageView) {
 		return Backbone.Router.extend({
 	

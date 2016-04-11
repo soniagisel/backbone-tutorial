@@ -16,19 +16,19 @@ define(['Backbone','userModel', 'text!usersListTmpl'],
             delete: function() {
                 if (confirm('ELIMINAR USUARIO?')) {
                     console.log('edit user');
+                    this.model.destroy({
+                        success: function(response) {
+                            console.log('Successfully DELETED user with _id: ' + response.toJSON()._id);
+                        },
+                        error: function() {
+                            console.log('Failed to DELETE user.');
+                        }
+                    });
                 }
-    
-                this.model.destroy({
-                    success: function(response) {
-                        console.log('Successfully DELETED user with _id: ' + response.toJSON()._id);
-                    },
-                    error: function() {
-                        console.log('Failed to DELETE user.');
-                    }
-                });
+
             },
             render : function() {
-                this.$el.html(this.template(this.model.toJSON()));
+                this.$el.html(this.template({user: this.model.toJSON()}));
                 return this;
             }
         });

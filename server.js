@@ -18,8 +18,14 @@ var UserSchema = new Schema({
 	phone: String
 });
 
+var AccountSchema = new Schema({
+	username: String,
+	password: String
+});
+
 mongoose.model('Blog', BlogSchema);
 mongoose.model('User', UserSchema);
+mongoose.model('Account', AccountSchema);
 
 var Blog = mongoose.model('Blog');
 var User = mongoose.model('User');
@@ -140,6 +146,22 @@ app.put('/api/users/:id', function(req, res) {
 			res.send({_id: req.params.id})
 		} else {
 			res.send({error: err})
+		}
+	});
+});
+
+
+// New account
+
+app.post('/auth/signup', function (req, res) {
+	console.log('Received POST request for USERS');
+
+	var user = new User(req.body);
+	user.save(function (err, doc) {
+		if (!err) {
+			res.send(doc);
+		} else {
+			res.send({error : err})
 		}
 	});
 });

@@ -6,7 +6,7 @@ define(['Backbone'], function (Backbone) {
             username    : '',
             password    : ''
         },
-        //urlRoot: 'http://localhost:3000/api/login'
+        urlRoot: 'http://localhost:3000/auth/signup'
     });
     return SignUpModel;
 });

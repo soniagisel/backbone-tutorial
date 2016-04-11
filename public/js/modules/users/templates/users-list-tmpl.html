@@ -1,7 +1,7 @@
-<td><span class="username"><%= username %></span></td>
-<td><span class="email"><%= email %></span></td>
-<td><span class="phone"><%= phone %></span></td>
+<td><span class="username"><%= user.username %></span></td>
+<td><span class="email"><%= user.email ? user.email : '-' %></span></td>
+<td><span class="phone"><%= user.phone ? user.phone : '-' %></span></td>
 <td>
-    <a href="#users/<%= _id %>" class="btn btn-primary edit-button">Edit</a>
+    <a href="#users/<%= user._id %>" class="btn btn-primary edit-button">Edit</a>
     <a class="btn btn-danger delete-button">Delete</a>
 </td>

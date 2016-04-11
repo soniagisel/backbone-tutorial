@@ -30,7 +30,7 @@ define(['Backbone', 'text!userFromTmpl', 'usersListView', 'userModel', 'usersPag
             },
 
             render: function() {
-                this.$el.html(this.template(this.model.toJSON()));
+                this.$el.html(this.template({user: this.model.toJSON()}));
                 return this;
             },
 
