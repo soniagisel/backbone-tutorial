@@ -16,6 +16,10 @@ define(['Backbone', 'usersPageView', 'blogsPageView', 'userFormView', 'usersColl
 			signUpPage: function () {
 				new SignUpPageView();
 			},
+
+			logInPage: function () {
+				new LogInPageView();
+			},
 	
 			blogsPage : function() {
 				var blogs = new BlogsCollection();
