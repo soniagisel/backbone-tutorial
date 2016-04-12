@@ -6,6 +6,7 @@ define(['Backbone', 'usersPageView', 'blogsPageView', 'userFormView', 'usersColl
 			routes: {
 				''             : 'signUpPage',
 				'auth/signup'  : 'signUpPage',
+				'auth/login'   : 'logInPage',
 				'blogs'        : 'blogsPage',
 				'users'        : 'usersPage',
 				'users/:id'    : 'editUserPage',
