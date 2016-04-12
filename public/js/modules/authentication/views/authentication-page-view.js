@@ -9,7 +9,6 @@ define(['Backbone','text!signUpPageTmpl', 'userModel', 'validate'],
             },
             
             initialize : function() {
-                console.log('initialize');
                 this.template = _.template(SignUpPageTmpl);
                 this.render();
             },
